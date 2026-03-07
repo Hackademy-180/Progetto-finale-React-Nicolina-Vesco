@@ -3,10 +3,12 @@ import { BsSearch } from "react-icons/bs";
 import { FaRegStar } from "react-icons/fa";
 import { FaUserAstronaut } from "react-icons/fa";
 import { IoDiceOutline } from "react-icons/io5";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { CgUserList } from "react-icons/cg";
 import { IoMdLogIn } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../context/UserContext";
 
 
 export default function Navbar() {
@@ -16,6 +18,14 @@ export default function Navbar() {
     const handleChange = (e) => {
         setSlug(e.target.value);
     }
+
+    const navigate = useNavigate();
+    const { user, profile, signOut } = useContext(UserContext);
+    const handleLogout = async () => {
+        await navigate('/');
+        signOut();
+    }
+
     useEffect(() => {
         async function getAllGenres() {
             const promise = await fetch(`https://api.rawg.io/api/genres?key=${import.meta.env.VITE_API_KEY}`);
@@ -88,22 +98,38 @@ export default function Navbar() {
                     </label>
 
                     <Link to="" className=""><FaRegStar size={24} /></Link>
-
-                    <div class="dropdown dropdown-end">
-                        <div tabindex="0" role="button" class="m-1">
-                            <Link to="" className=""><FaUserAstronaut size={24} /></Link>
-                        </div>
-                        <ul tabindex="-1" class="mt-3 dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-                            <li><Link to="/auth/login"><IoMdLogIn /> Login</Link></li>
-                            <li><Link to="/auth/register"><CgUserList /> Registrati</Link></li>
-                        </ul>
-                    </div>
-                    
+                    {(!user && (
+                        <>
+                            <div className="dropdown dropdown-end">
+                                <div tabIndex="0" role="button" class="m-1">
+                                    <Link to="" className=""><FaUserAstronaut size={24} /></Link>
+                                </div>
+                                <ul tabIndex="-1" className="mt-3 dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                                    <li><Link to="/auth/login"><IoMdLogIn /> Login</Link></li>
+                                    <li><Link to="/auth/register"><CgUserList /> Registrati</Link></li>
 
 
+                                </ul>
+                            </div>
+                        </>
+                    )) || (
+                            <>
+                                <div className="dropdown dropdown-end">
+                                    <div tabIndex="0" role="button" class="m-1">
+                                     <span className="flex gap-3"> <Link to="" className=""><FaUserAstronaut size={24} /></Link>{profile.username}</span>   
+                                    </div>
+                                    <ul tabIndex="-1" className="mt-3 dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                                        <li onClick={handleLogout}>
+                                            <button>Logout</button>
+                                        </li>
+                                    </ul>
 
+                                </div>
+                            </>
+
+                        )}
                 </div>
-            </div>
+            </div >
         </>
     )
 }

@@ -6,7 +6,8 @@
   --font-roboto: "Roboto", sans-serif;
   --font-electro: "Electrolize", sans-serif;
   --color-card: #1E293B;
-  --color-btn: #F97316
+  --color-btn: #F97316;
+  --color-btn-hover: #EA580C;
 }
 
 @plugin "daisyui";
