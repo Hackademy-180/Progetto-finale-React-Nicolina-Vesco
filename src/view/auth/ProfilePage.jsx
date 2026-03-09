@@ -4,10 +4,17 @@ import { UserContext } from "../../context/UserContext"
 import { Link } from "react-router-dom";
 import router from "../../router/router";
 import supabase from "../../database/supabase";
+import { BsSearch } from "react-icons/bs";
+import { FaStar, FaClock } from "react-icons/fa";
+
+
 
 export default function ProfilePage() {
     const { user, profile } = useContext(UserContext);
     const [avatarUrl, setAvatarUrl] = useState();
+    const [slug, setSlug] = useState();
+    const [userFavourites, setUserFavourites] = useState();
+
 
     const download_avatar = async () => {
         if (profile) {
@@ -17,27 +24,73 @@ export default function ProfilePage() {
         }
     };
 
+    const get_favourites = async () => {
+        if (profile) {
+            let { data: favourites, error } = await supabase.from("favourites").select("*").eq("profile_id", profile.id);
+            setUserFavourites(favourites);
+        }
+    };
+
     useEffect(() => {
         download_avatar();
+        get_favourites();
     }, [profile]);
 
+    const handleChange = (e) => {
+        setSlug(e.target.value);
+    }
+
     return (
-        <main className="h-screen pt-24 bg-[url('/media/background-reg-and-log.png')] bg-cover bg-center">
+        <main className=" h-screen pt-24 bg-[url('/media/background-reg-and-log.png')] bg-cover bg-center">
             {user && profile && (
                 <>
-                    <section className="flex px-36">
+                    <section className="flex md:justify-evenly items-center px-36 profilePage">
                         <div className="flex justify-center flex-col-reverse items-center">
-                            <article className=" bg-black/70 backdrop-blur-md border-gray-700 rounded-2xl w-100 border text-center p-10 w-[350px] h-[350px] space-y-3">
-                                <h3 className="font-bold text-2xl mt-3">I tuoi dati: </h3>
-                                <p className="mt-5">Nome e Cognome: {profile.first_name} {profile.last_name}</p>
+                            <article className=" bg-black/70 backdrop-blur-md border-gray-700 rounded-2xl border text-center p-10 w-[320px] md:w-[350px]  h-[350px] space-y-3">
+                                <h3 className="font-bold text-2xl mt-3">Your profile detail: </h3>
+                                <p className="mt-5">Name and Surname: {profile.first_name} {profile.last_name}</p>
                                 <p>Username: {profile.username}</p>
                                 <p>Email: {user.email}</p>
 
-                                <Link to="/auth/profile/settings" className="mt-4 btn bg-(--color-btn) hover:bg-(--color-btn-hover)">Impostazioni</Link>
+                                <Link to="/auth/profile/settings" className="mt-4 btn bg-(--color-btn) hover:bg-(--color-btn-hover)">Settings</Link>
                             </article>
-                            <article className="pt-20 flex flex-col items-center w-100">
-                                <img src={avatarUrl ?? Default} alt="Profile Image" className="rounded-full w-[200px] h-[200px] mx-auto -translate-y-[-30px] border-4 border-gray-700 shadow-xl" />
+                            <article className="pt-5 md:pt-20 flex flex-col items-center w-[350px]">
+                                <img src={avatarUrl ?? Default} alt="Profile Image" className="rounded-full w-[100px] h-[100px] md:w-[200px] md:h-[200px] mx-auto -translate-y-[-30px] border-4 border-gray-700 shadow-xl" />
                             </article>
+                            <label className="input mt-10 searchBarProfile md:hidden">
+                                <input type="search" required placeholder="Search" onChange={handleChange} />
+                                <Link to={`/search/${slug}`}><BsSearch /></Link>
+                            </label>
+                        </div>
+                        <div className="flex flex-col mt-50">
+                            <ul className="list bg-base-100 rounded-box shadow-md w-200" >
+
+                                <li className="p-4 pb-2 text-xs opacity-60 tracking-wide">Your favourite games</li>
+                                {userFavourites && userFavourites.map((game) => {
+                                    return (
+
+
+                                        <li className="list-row border border-white/5" key={game.id}>
+                                            <div><img className="size-20 rounded-box" src={game.game_image} alt={game.game_name} /></div>
+                                            <div className="space-y-2">
+                                                <div className="font-bold">{game.game_name}</div>
+                                                <div className="text-xs uppercase font-semibold opacity-60">About this game</div>
+                                                <p className="list-col-wrap text-xs">
+                                                    {game.game_description || "No description available."}
+                                                </p>
+                                            </div>
+                                            <button className="btn btn-square btn-ghost w-25">
+                                                <FaClock className="text-orange-400" /> {game.game_playtime} H
+
+                                            </button>
+                                            <button className="btn btn-square btn-ghost w-25">
+                                                <FaStar className="text-yellow-400" /> {game.game_rating}
+                                            </button>
+                                        </li>
+                                    );
+                                })}
+                            </ul>
+
                         </div>
                     </section>
                 </>

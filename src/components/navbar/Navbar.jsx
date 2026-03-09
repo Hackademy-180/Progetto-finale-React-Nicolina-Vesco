@@ -51,7 +51,7 @@ export default function Navbar() {
 
     return (
         <>
-            <div className="navbar bg-transparent absolute z-50">
+            <div className="navbar gap-2 md:gap-0 bg-transparent absolute z-50">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -104,14 +104,14 @@ export default function Navbar() {
                         <li> <Link to=""><IoDiceOutline size={24} /> </Link></li>
                     </ul>
                 </div>
-                <div className="navbar-end gap-5 me-4">
+                <div className="navbar-end gap-2 md:gap-5 me-4 ">
 
-                    <label className="input">
+                    <label className="input searchBar">
                         <input type="search" required placeholder="Search" onChange={handleChange} />
                         <Link to={`/search/${slug}`}><BsSearch /></Link>
                     </label>
 
-                    <Link to="" className=""><FaRegStar size={24} /></Link>
+                    <Link to="/auth/profile" className="starIcon"><FaRegStar size={24} /></Link>
                     {(!user && !profile && (
                         <>
                             <div className="dropdown dropdown-end">
@@ -129,7 +129,7 @@ export default function Navbar() {
                     )) || (
                             <>
                                 <div className="dropdown dropdown-end">
-                                    <div tabIndex="0" role="button" class="m-1 flex items-center gap-3">
+                                    <div tabIndex="0" role="button" className="m-1 flex items-center gap-3">
                                         <Link to="" className=""><img src={avatarUrl ?? Default} alt="Profile Image" className="rounded-full w-[50px] h-[50px]" />
                                         </Link>{profile?.username}
                                     </div>

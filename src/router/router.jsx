@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../components/Layouts/Layout.jsx"
 import Homepage from "../view/Homepage.jsx"
-import { getAllGamesLoader, getFilteredByGenreGames } from "./loaders.jsx";
+import { getAllGamesLoader, getFilteredByGenreGames, getGameDetails } from "./loaders.jsx";
 import SearchPage from "../view/SearchPage.jsx";
 import { getSearchedGames } from "./loaders.jsx";
 import { getAllGenres } from "./loaders.jsx";
@@ -11,6 +11,7 @@ import Login from "../view/auth/Login.jsx"
 import Register from "../view/auth/Register.jsx"
 import ProfilePage from "../view/auth/ProfilePage.jsx"
 import ProfileSettingsPage from "../view/auth/ProfileSettingsPage.jsx"
+import DetailPage from "../view/DetailPage.jsx"
 
 
 const router = createBrowserRouter([
@@ -57,6 +58,11 @@ const router = createBrowserRouter([
                 Component: ProfileSettingsPage
             }
         ]
+    },
+    {
+        path:'detail/:id',
+        Component: DetailPage,
+        loader: getGameDetails
     }
 
 ]);

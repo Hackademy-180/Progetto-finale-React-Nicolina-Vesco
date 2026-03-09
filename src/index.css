@@ -187,6 +187,16 @@ header {
     background: rgba(0, 0, 0, 0.10);
     border-radius: 0.75rem;
   }
+
+  .searchBar{
+    display:none;
+  }
+  
+  .navbar-end{
+    display:flex;
+    justify-content: end;
+    margin:0px;
+  }
 }
 
 
@@ -262,3 +272,31 @@ header {
     display:none;
   }
 }
+
+/* Media query Profile Page */
+@media screen and (max-width:768px) {
+  .profilePage{
+    padding-left: 0px;
+    padding-right:0px;
+    display:flex;
+    justify-content: center;
+  }
+}
+
+
+/* Media Query Profile Page Settings */
+@media screen and (max-width:768px) {
+  .settingsSection{
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .dataForm{
+    padding:0;
+  }
+  
+}
+
+
+/* * {
+  outline: 1px solid red;
+} */

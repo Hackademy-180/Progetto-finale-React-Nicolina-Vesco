@@ -3,22 +3,22 @@ import { GrFormPrevious } from "react-icons/gr";
 import { useEffect } from "react";
 
 export default function Header() {
-    useEffect(()=>{
+    useEffect(() => {
         const slider = document.querySelector('.slider');
 
-        function activate(e){
+        function activate(e) {
             const items = document.querySelectorAll('.item');
 
-            if(e.target.closest('.next')){
+            if (e.target.closest('.next')) {
                 slider.append(items[0]);
             }
 
-            if(e.target.closest('.prev')){
-                slider.prepend(items[items.length -1]);
+            if (e.target.closest('.prev')) {
+                slider.prepend(items[items.length - 1]);
             }
         }
         document.addEventListener('click', activate);
-        return()=>{
+        return () => {
             document.removeEventListener('click', activate);
         };
     }, []);
@@ -26,6 +26,12 @@ export default function Header() {
     return (
         <>
             <header className="rev-header">
+                <div className="absolute top-30 left-12 z-20">
+                    <h1 className="text-5xl font-extrabold tracking-widest text-(--color-btn) text-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
+                        REHACKTOR
+                    </h1>
+                    <p className="text-gray-200 text-sm tracking-wide">Videogame reviews</p>
+                </div>
                 <ul className='slider'>
                     <li className='img0 item'>
                         <div className='content'>
