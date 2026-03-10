@@ -23,11 +23,11 @@ export default function Login() {
 
     return (
         <>
-            <main className="flex justify-center items-center flex-col p-59 bg-[url('/media/background-reg-and-log.png')] bg-cover bg-center">
-                <img src="/media/logo.png" alt="" className="logo-register w-40" />
+            <main className="min-h-screen flex justify-center items-center md:p-0 flex-col bg-[url('/media/background-reg-and-log.png')] bg-cover bg-center">
+                <img src="/media/logo.png" alt="" className="logo-register hidden md:block w-30 md:w-40" />
 
                 <form className="login_form flex justify-center" onSubmit={handleSubmit(onSubmit)}>
-                    <fieldset className="fieldset bg-black/70 backdrop-blur-md border-gray-700 rounded-2xl w-100 border mt-[10px] text-center p-4 space-y-3">
+                    <fieldset className="fieldset bg-black/70 backdrop-blur-md border-gray-700 rounded-2xl w-75 md:w-100 border mt-[10px] text-center p-4 space-y-3">
                         <h2 className="text-3xl font-bold text-white mb-2">Login</h2>
                         <div>
 
@@ -46,7 +46,7 @@ export default function Login() {
                     </fieldset>
 
                 </form>
-                <div className="mt-2">
+                <div className="mt-2 text-center px-15">
                     <span>Non hai un account di Rehacktor? <Link to="/auth/register" className="text-(--color-btn)">Crea un nuovo account</Link></span>
                 </div>
             </main>

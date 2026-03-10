@@ -9,13 +9,13 @@ export default function Header({ game }) {
             <h2 className="text-center text-2xl">
                 Released on: <span className="font-bold">{game.released}</span>
             </h2>
-            <section className="grid grid-cols-1 gap-4 mt-20">
-                <div className="flex justify-around items-start">
-                    <article className="px-10 w-[600px]">
-                        <p className="line-clamp-16 font-electro">{game.description_raw}</p>
+            <section className="flex flex-col gap-4 mt-20">
+                <div className="flex flex-col gap-10 md:gap:0 md:flex-row md:justify-around md:items-start">
+                    <article className="px-10 md:w-[600px]">
+                        <p className="line-clamp-18 font-electro">{game.description_raw}</p>
                     </article>
 
-                    <div className="card rounded-3xl border bg-base-100/80 border-gray-700 w-100">
+                    <div className="card rounded-3xl border bg-base-100/80 border-gray-700  md:w-100">
                         <div className="card-body p-8 text-center">
                             <h3 className="text-2xl font-bold mb-6 text-center font-electro tracking-wide">
                                 Game Overview

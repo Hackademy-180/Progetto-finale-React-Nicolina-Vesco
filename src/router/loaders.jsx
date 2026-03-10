@@ -4,6 +4,29 @@ export async function getAllGamesLoader(){
     return json;
 }
 
+export async function getTopRatedGames(){
+    const promise = await fetch(`https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}&ordering=-rating&page_size=16`);
+    const json = await promise.json();
+    return json;
+}
+export async function getUpcomingGames(){
+    const promise = await fetch(`https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}&ordering=-released&page_size=16`);
+    const json = await promise.json();
+    return json;
+}
+export async function homepageLoader(){
+    const [games, topRated, upcoming] = await Promise.all([
+        getAllGamesLoader(),
+        getTopRatedGames(),
+        getUpcomingGames()
+    ]);
+    return {
+        games: games.results,
+        topRated: topRated.results,
+        upcoming: upcoming.results
+    };
+}
+
 export async function getSearchedGames({params}){
     const promise = await fetch(`https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}&search=${params.slug}`);
     const json = await promise.json();

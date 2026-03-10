@@ -120,7 +120,7 @@ export default function Navbar() {
                                 </div>
                                 <ul tabIndex="-1" className="mt-3 dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
                                     <li><Link to="/auth/login"><IoMdLogIn /> Login</Link></li>
-                                    <li><Link to="/auth/register"><CgUserList /> Registrati</Link></li>
+                                    <li><Link to="/auth/register"><CgUserList /> Register</Link></li>
 
 
                                 </ul>
@@ -134,7 +134,7 @@ export default function Navbar() {
                                         </Link>{profile?.username}
                                     </div>
                                     <ul tabIndex="-1" className="mt-3 dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-                                        <li><Link to="/auth/profile">Profilo</Link></li>
+                                        <li><Link to="/auth/profile">Account</Link></li>
                                         <li onClick={handleLogout}>
                                             <button>Logout</button>
                                         </li>

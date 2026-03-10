@@ -1,10 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../components/Layouts/Layout.jsx"
 import Homepage from "../view/Homepage.jsx"
-import { getAllGamesLoader, getFilteredByGenreGames, getGameDetails } from "./loaders.jsx";
+import {getFilteredByGenreGames, getGameDetails, getAllGenres, getSearchedGames } from "./loaders.jsx";
+import { homepageLoader } from "./loaders.jsx";
 import SearchPage from "../view/SearchPage.jsx";
-import { getSearchedGames } from "./loaders.jsx";
-import { getAllGenres } from "./loaders.jsx";
 import GenrePage from "../view/GenrePage.jsx";
 import AuthenticationLayout from "../components/Layouts/AuthenticationLayout.jsx";
 import Login from "../view/auth/Login.jsx"
@@ -23,7 +22,7 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 Component: Homepage,
-                loader: getAllGamesLoader
+                loader: homepageLoader
             },
             {
                 path: "/search/:slug",

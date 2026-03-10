@@ -28,11 +28,11 @@ export default function Register() {
         navigate('/')
     }
     return (
-        <main className="flex justify-center items-center flex-col p-30 bg-[url('/media/background-reg-and-log.png')] bg-cover bg-center">
-            <img src="/media/logo.png" alt="" className="logo-register w-40" />
+        <main className="flex justify-center items-center flex-col min-h-screen pt-35 md:pt-20 bg-[url('/media/background-reg-and-log.png')] bg-cover bg-center pb-10">
+            <img src="/media/logo.png" alt="" className="logo-register hidden md:block w-30 md:w-40" />
             <form action="" className="flex justify-center" onSubmit={handleSubmit(onSubmit)}>
-                <fieldset className="fieldset bg-black/70 backdrop-blur-md border-gray-700 rounded-2xl w-100 border mt-[10px] text-center p-4 space-y-3">
-                    <legend className="fieldset-legend text-3xl mx-auto px-2">Registrati</legend>
+                <div className="fieldset bg-black/70 backdrop-blur-md border-gray-700 rounded-2xl w-90 md:w-100 border mt-[10px] text-center p-4 space-y-3">
+                    <h2 className="fieldset-legend text-3xl mx-auto px-2">Registrati</h2>
 
                     <div>
                         <input
@@ -110,12 +110,12 @@ export default function Register() {
                     <button type="submit" className="btn bg-(--color-btn) hover:bg-(--color-btn-hover) mt-4 text-l">
                         Registrati
                     </button>
-                </fieldset>
+                </div>
 
 
             </form>
 
-            <div className="mt-2">
+            <div className="mt-2 text-center">
                 <span>Hai già un account di Rehacktor? <Link to="/auth/login" className="text-(--color-btn)">Accedi</Link></span>
             </div>
         </main>

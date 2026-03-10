@@ -41,10 +41,10 @@ export default function ProfilePage() {
     }
 
     return (
-        <main className=" h-screen pt-24 bg-[url('/media/background-reg-and-log.png')] bg-cover bg-center">
+        <main className="min-h-screen pb-10 pt-24 bg-[url('/media/background-reg-and-log.png')] bg-cover bg-center bg-fixed">
             {user && profile && (
                 <>
-                    <section className="flex md:justify-evenly items-center px-36 profilePage">
+                    <section className="flex flex-col md:flex-row md:justify-evenly items-center px-36 profilePage">
                         <div className="flex justify-center flex-col-reverse items-center">
                             <article className=" bg-black/70 backdrop-blur-md border-gray-700 rounded-2xl border text-center p-10 w-[320px] md:w-[350px]  h-[350px] space-y-3">
                                 <h3 className="font-bold text-2xl mt-3">Your profile detail: </h3>
@@ -62,16 +62,16 @@ export default function ProfilePage() {
                                 <Link to={`/search/${slug}`}><BsSearch /></Link>
                             </label>
                         </div>
-                        <div className="flex flex-col mt-50">
-                            <ul className="list bg-base-100 rounded-box shadow-md w-200" >
+                        <div className="flex flex-col mt-5 lg:mt-50 favouriteReview">
+                            <ul className="list bg-base-100 rounded-box shadow-md w-75 md:w-200" >
 
                                 <li className="p-4 pb-2 text-xs opacity-60 tracking-wide">Your favourite games</li>
                                 {userFavourites && userFavourites.map((game) => {
                                     return (
 
 
-                                        <li className="list-row border border-white/5" key={game.id}>
-                                            <div><img className="size-20 rounded-box" src={game.game_image} alt={game.game_name} /></div>
+                                        <li className="sm:flex sm:flex-col md:flex-row list-row border border-white/5" key={game.id}>
+                                            <div><img className="size-10 md:size-20 rounded-box" src={game.game_image} alt={game.game_name} /></div>
                                             <div className="space-y-2">
                                                 <div className="font-bold">{game.game_name}</div>
                                                 <div className="text-xs uppercase font-semibold opacity-60">About this game</div>
@@ -79,13 +79,16 @@ export default function ProfilePage() {
                                                     {game.game_description || "No description available."}
                                                 </p>
                                             </div>
-                                            <button className="btn btn-square btn-ghost w-25">
-                                                <FaClock className="text-orange-400" /> {game.game_playtime} H
+                                            <div className="flex flex-col gap-5 md:gap-0 md:flex-row">
 
-                                            </button>
-                                            <button className="btn btn-square btn-ghost w-25">
-                                                <FaStar className="text-yellow-400" /> {game.game_rating}
-                                            </button>
+                                                <button className="flex flex-col md:flex-row btn btn-square btn-ghost  md:w-25">
+                                                    <FaClock className="text-orange-400" /> {game.game_playtime} H
+
+                                                </button>
+                                                <button className="flex flex-col md:flex-row btn btn-square btn-ghost md:w-25">
+                                                    <FaStar className="text-yellow-400" /> {game.game_rating}
+                                                </button>
+                                            </div>
                                         </li>
                                     );
                                 })}

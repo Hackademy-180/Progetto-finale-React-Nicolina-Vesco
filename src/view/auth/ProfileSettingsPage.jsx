@@ -58,19 +58,19 @@ export default function ProfileSettingsPage() {
 
     return (
         <main className="h-screen flex flex-col justify-center items-center pt-30 md:pt-20 md:pt-10 bg-[url('/media/background-reg-and-log.png')] bg-cover bg-center">
-            <h1 className="text-3xl font-bold mb-8">Impostazioni profilo</h1>
+            <h1 className="text-3xl font-bold mb-8">Account Settings</h1>
             <section className="flex settingsSection">
                 <form action="" className="p-10 bg-nav-gray w-[320px] md:w-[600px] flex justify-center md:justify-between items-center dataForm" onSubmit={handleSubmit(onSubmit)}>
                     <div className="flex justify-center flex-col">
 
-                        <input type="text" placeholder="Nome" className="input input-lg mb-5 md:w-100"
+                        <input type="text" placeholder="Name" className="input input-lg mb-5 md:w-100"
                             {...register("first_name", { required: "Questo campo è obbligatorio" })}
                         />
                         {errors.first_name && (
                             <p className="text-red-500 mb-6">{errors.first_message}</p>
                         )}
 
-                        <input type="text" placeholder="Cognome" className="input input-lg mb-5 w-full"
+                        <input type="text" placeholder="Surname" className="input input-lg mb-5 w-full"
                             {...register("last_name", { required: "Questo campo è obbligatorio" })}
                         />
                         {errors.last_name && (
@@ -83,21 +83,21 @@ export default function ProfileSettingsPage() {
                         {errors.username && (
                             <p className="text-red-500 mb-6">{errors.username_message}</p>
                         )}
-                        <button className="btn p-5 bg-(--color-btn) hover:bg-(--color-btn-hover)">Modifica</button>
+                        <button className="btn p-5 bg-(--color-btn) hover:bg-(--color-btn-hover)">Edit</button>
                     </div>
 
 
                 </form>
                 <form action="" className="md:p-10 bg-nav-gray w-1/2 imgForm" onSubmit={handleAvatarSubmit}>
                     <div className=" flex flex-col items-end w-75 md:w-50 ">
-                        <h4 className="pe-20 md:pe-8 font-bold">Immagine di profilo</h4>
+                        <h4 className="pe-20 md:pe-13 font-bold">Profile image</h4>
                         <img src={avatarUrl ?? Default} alt="Profile Image" className="rounded-full w-[150px] h-[150px] md:w-[200px] md:h-[200px] mx-auto mt-2  border-4 border-gray-700 shadow-xl" />
 
                         <details className="dropdown">
-                            <summary className="btn h-[30px] -translate-y-10 -translate-x-30 md:-translate-x-20"><MdOutlineEdit size={18} /> Modifica</summary>
+                            <summary className="btn h-[30px] -translate-y-10 -translate-x-35 md:-translate-x-25"><MdOutlineEdit size={18} /> Edit</summary>
                             <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm -translate-y-10 -translate-x-30 md:-translate-x-20 mt-2">
                                 <li><input type="file" className="file-input file-input-ghost w-full border-none " onChange={handleChange} /></li>
-                                <li><a>Rimuovi foto</a></li>
+                                <li><a>Remove photo</a></li>
                             </ul>
                         </details>
 
