@@ -61,7 +61,7 @@ export default function Navbar() {
                             tabIndex={-1}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                             <li><Link to='/'>Home</Link></li>
-                            <li><Link to=''>New</Link></li>
+                            <li><Link to='/new'>New</Link></li>
 
                             <li>
                                 <details>
@@ -77,7 +77,7 @@ export default function Navbar() {
                                     </ul>
                                 </details>
                             </li>
-                            <li><Link to=''>Trending</Link></li>
+                            <li><Link to='/trending'>Trending</Link></li>
                         </ul>
                     </div>
                     <Link to="/"><img src="/media/logo.png" alt="Logo sito" className="logo w-24 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]" /></Link>
@@ -85,7 +85,7 @@ export default function Navbar() {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 flex items-center">
                         <li className="text-xl"><Link to="/">Home</Link></li>
-                        <li className='text-xl'><Link to="">New</Link></li>
+                        <li className='text-xl'><Link to="/new">New</Link></li>
                         <li>
                             <details>
                                 <summary className='text-xl'>Genres</summary>
@@ -100,8 +100,8 @@ export default function Navbar() {
                                 </ul>
                             </details>
                         </li>
-                        <li className="text-xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"><Link to="">Trending</Link></li>
-                        <li> <Link to=""><IoDiceOutline size={24} /> </Link></li>
+                        <li className="text-xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"><Link to="/trending">Trending</Link></li>
+                        <li className="text-xl"><Link to="">FAQ</Link></li>
                     </ul>
                 </div>
                 <div className="navbar-end gap-2 md:gap-5 me-4 ">
@@ -130,7 +130,7 @@ export default function Navbar() {
                             <>
                                 <div className="dropdown dropdown-end">
                                     <div tabIndex="0" role="button" className="m-1 flex items-center gap-3">
-                                        <Link to="" className=""><img src={avatarUrl ?? Default} alt="Profile Image" className="rounded-full w-[50px] h-[50px]" />
+                                        <Link to="" className="shrink-0 w-10 h-10 md:w-12 md:h-12"><img src={avatarUrl ?? Default} alt="Profile Image" className="profileImg rounded-full w-full h-full object-cover block" />
                                         </Link>{profile?.username}
                                     </div>
                                     <ul tabIndex="-1" className="mt-3 dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">

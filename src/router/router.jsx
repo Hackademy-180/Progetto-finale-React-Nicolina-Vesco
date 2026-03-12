@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../components/Layouts/Layout.jsx"
 import Homepage from "../view/Homepage.jsx"
-import {getFilteredByGenreGames, getGameDetails, getAllGenres, getSearchedGames } from "./loaders.jsx";
+import { getFilteredByGenreGames, getGameDetails, getAllGenres, getSearchedGames, getTopRatedGames } from "./loaders.jsx";
 import { homepageLoader } from "./loaders.jsx";
 import SearchPage from "../view/SearchPage.jsx";
 import GenrePage from "../view/GenrePage.jsx";
@@ -11,6 +11,9 @@ import Register from "../view/auth/Register.jsx"
 import ProfilePage from "../view/auth/ProfilePage.jsx"
 import ProfileSettingsPage from "../view/auth/ProfileSettingsPage.jsx"
 import DetailPage from "../view/DetailPage.jsx"
+import TrendingPage from "../view/TrendingPage.jsx"
+import BaseLayout from "../components/Layouts/BaseLayout.jsx"
+import NewPage from "../view/NewPage.jsx";
 
 
 const router = createBrowserRouter([
@@ -59,9 +62,37 @@ const router = createBrowserRouter([
         ]
     },
     {
-        path:'detail/:id',
+        path: 'detail/:id',
         Component: DetailPage,
         loader: getGameDetails
+    },
+
+    {
+        path: '/',
+        Component: BaseLayout,
+        loader: getAllGenres,
+        children: [
+            {
+                path: 'trending',
+                Component: TrendingPage,
+                loader: getTopRatedGames
+            },
+            {
+                path: 'new',
+                Component: NewPage,
+
+            },
+            {
+                path: "/search/:slug",
+                Component: SearchPage,
+                loader: getSearchedGames,
+            },
+            {
+                path: "/genres/:slug",
+                Component: GenrePage,
+                loader: getFilteredByGenreGames
+            }
+        ]
     }
 
 ]);

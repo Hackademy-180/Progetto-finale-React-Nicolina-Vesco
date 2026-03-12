@@ -7,7 +7,7 @@ export default function GenrePage() {
 
     return (
         <>
-            <div className="pt-20 px-4">
+            <div className="container pt-20 px-4 mx-auto pb-10">
                 <h1 className="text-center text-3xl mb-5">Filtrato per genere: {slug}</h1>
 
                 <GameList>
@@ -18,6 +18,8 @@ export default function GenrePage() {
 
                 </GameList>
             </div>
+
+            
 
         </>
     )

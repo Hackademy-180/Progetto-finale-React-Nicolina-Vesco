@@ -1,9 +1,8 @@
 import { useForm } from "react-hook-form"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import supabase from "../../database/supabase";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
-import { Link } from "react-router-dom";
 
 
 export default function Login() {
