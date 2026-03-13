@@ -91,13 +91,13 @@ export default function ProfileSettingsPage() {
                 <form action="" className="md:p-10 bg-nav-gray w-1/2 imgForm" onSubmit={handleAvatarSubmit}>
                     <div className=" flex flex-col items-end w-75 md:w-50 ">
                         <h4 className="pe-20 md:pe-13 font-bold">Profile image</h4>
-                        <img src={avatarUrl ?? Default} alt="Profile Image" className="rounded-full w-[150px] h-[150px] md:w-[200px] md:h-[200px] mx-auto mt-2  border-4 border-gray-700 shadow-xl" />
+                        <img src={preview ?? avatarUrl ?? Default} alt="Profile Image" className="rounded-full w-[150px] h-[150px] md:w-[200px] md:h-[200px] mx-auto mt-2  border-4 border-gray-700 shadow-xl" />
 
                         <details className="dropdown">
                             <summary className="btn h-[30px] -translate-y-10 -translate-x-35 md:-translate-x-25"><MdOutlineEdit size={18} /> Edit</summary>
-                            <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm -translate-y-10 -translate-x-30 md:-translate-x-20 mt-2">
-                                <li><input type="file" className="file-input file-input-ghost w-full border-none " onChange={handleChange} /></li>
-                                <li><a>Remove photo</a></li>
+                            <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm -translate-y-10 -translate-x-35 md:-translate-x-25 mt-2 space-y-2">
+                                <li><input type="file" className=" btn file-input-ghost w-full" onChange={handleChange} /></li>
+                                <li><button type="submit" className="btn btn-sm">Carica</button></li>
                             </ul>
                         </details>
 
