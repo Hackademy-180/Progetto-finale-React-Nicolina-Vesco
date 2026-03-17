@@ -65,7 +65,7 @@ export default function ProfilePage() {
                         <div className="flex flex-col mt-5 lg:mt-50 favouriteReview">
                             <ul className="list bg-base-100 rounded-box shadow-md w-75 md:w-200" >
 
-                                <li className="px-6 pt-5 pb-3 text-sm tracking-wide text-white font-semibold">Your favourite games</li>
+                                <li className="px-6 pt-5 pb-3 text-sm tracking-wide font-semibold">Your favourite games</li>
                                 {userFavourites && userFavourites.map((game) => {
                                     return (
 
